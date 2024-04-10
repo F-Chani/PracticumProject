@@ -1,0 +1,26 @@
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+h4 {
+  text-align: center;
+}
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+  }
+
+  mat-select {
+    width: 100%;
+  }
+}
+button.mat-button {
+  background-color: black;
+  /* רקע של הכפתורים */
+  color: white;
+  /* צבע הטקסט של הכפתורים */
+}

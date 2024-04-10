@@ -1,0 +1,6 @@
+@Practikoom_HostAddress = http://localhost:5095
+
+GET {{Practikoom_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

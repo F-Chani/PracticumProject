@@ -1,0 +1,17 @@
+
+<mat-dialog-content class="write" [formGroup]="positionForm" style="text-align:left;">
+  <div class="form-group">
+    <h2>Add New Position</h2>
+    <mat-form-field appearance="fill" >
+      <mat-label>Add Position</mat-label>
+      <input matInput type="text" class="inputname" placeholder="Enter Position Name" formControlName="name">
+      <mat-error *ngIf="positionForm.get('name')?.hasError('required')">Position Name is required</mat-error>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="cancel()">❌Cancel</button>
+  <button mat-button (click)="addPosition()">Add Position</button>
+</mat-dialog-actions>
+
+
