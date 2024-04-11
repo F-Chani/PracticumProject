@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\new\\ServerPractikoom\\server\\Practikoom.core\\Practicum.Core.csproj": {}
+    "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Practicum.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\new\\ServerPractikoom\\server\\Practikoom.core\\Practicum.Core.csproj": {
+    "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Practicum.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\new\\ServerPractikoom\\server\\Practikoom.core\\Practicum.Core.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Practicum.Core.csproj",
         "projectName": "Practicum.Core",
-        "projectPath": "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\new\\ServerPractikoom\\server\\Practikoom.core\\Practicum.Core.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Practicum.Core.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\new\\ServerPractikoom\\server\\Practikoom.core\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\חני תכנות\\פרקטיקום\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

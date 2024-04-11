@@ -35,6 +35,7 @@ namespace Practicum.Data.Repositories
             await _context.SaveChangesAsync();
             return employee;
         }
+        /*
         public async Task<Employee> UpdateAsync(string identity, Employee employee)
         {
             var updateEmployee = await _context.Employees.Include(e => e.PositionEmployees).FirstOrDefaultAsync(e => e.Identity == identity);
@@ -70,7 +71,32 @@ namespace Practicum.Data.Repositories
             }
             return updateEmployee;
         }
-  
+  */
+        public async Task<Employee> UpdateAsync(string currentIdentity,string newIdentity , Employee employee)
+        {
+            var existingEmployee = await _context.Employees.Include(e => e.PositionEmployees).FirstOrDefaultAsync(e => e.Identity == currentIdentity);
+            if (existingEmployee == null)
+            {
+                throw new InvalidOperationException($"Employee with Identity {currentIdentity} not found.");
+            }
+            existingEmployee.Identity = employee.Identity;
+            existingEmployee.FirstName = employee.FirstName;
+            existingEmployee.LastName = employee.LastName;
+            existingEmployee.StartOfWorkDate = employee.StartOfWorkDate;
+            existingEmployee.DateOfBirth = employee.DateOfBirth;
+            existingEmployee.Gender = employee.Gender;
+            existingEmployee.PositionEmployees = employee.PositionEmployees;
+            existingEmployee.Status = true;
+            foreach (var item in existingEmployee.PositionEmployees)
+            {
+                item.EmployeeId = existingEmployee.Id;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return existingEmployee;
+        }
+        /*
         public async Task<Employee> UpdateAsync(string currentIdentity, string newIdentity, Employee employee)
         {
             var updateEmployee = await _context.Employees.Include(e => e.PositionEmployees).FirstOrDefaultAsync(e => e.Identity == currentIdentity);
@@ -123,9 +149,9 @@ namespace Practicum.Data.Repositories
 
             return updateEmployee;
         }
+        */
 
 
-        
         public async Task DeleteAsync(string identity)
         {
             var employee = await _context.Employees.FirstOrDefaultAsync(e => e.Identity == identity);

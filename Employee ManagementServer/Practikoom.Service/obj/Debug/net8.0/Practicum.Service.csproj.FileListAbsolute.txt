@@ -30,3 +30,19 @@ C:\Users\User\Desktop\חני תכנות\פרקטיקום\new\ServerPractikoom\se
 C:\Users\User\Desktop\חני תכנות\פרקטיקום\new\ServerPractikoom\server\Practikoom.Service\obj\Debug\net8.0\refint\Practicum.Service.dll
 C:\Users\User\Desktop\חני תכנות\פרקטיקום\new\ServerPractikoom\server\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.pdb
 C:\Users\User\Desktop\חני תכנות\פרקטיקום\new\ServerPractikoom\server\Practikoom.Service\obj\Debug\net8.0\ref\Practicum.Service.dll
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\bin\Debug\net8.0\Practicum.Service.deps.json
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\bin\Debug\net8.0\Practicum.Service.dll
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\bin\Debug\net8.0\Practicum.Service.pdb
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\bin\Debug\net8.0\Practicum.Core.dll
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\bin\Debug\net8.0\Practicum.Core.pdb
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.AssemblyInfo.cs
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.sourcelink.json
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicu.4D4A796A.Up2Date
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.dll
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\refint\Practicum.Service.dll
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\Practicum.Service.pdb
+C:\Users\User\Desktop\חני תכנות\פרקטיקום\PracticumProject\Employee ManagementServer\Practikoom.Service\obj\Debug\net8.0\ref\Practicum.Service.dll
