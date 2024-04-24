@@ -40,8 +40,16 @@ namespace Practicum.Service.Services
 
         public async Task<Employee> UpdateAsync(string currentIdentity, string newIdentity, Employee employee)
         {
-            return await _employeeRepository.UpdateAsync(currentIdentity,newIdentity, employee);
+            // בדיקה שה-Identity החדש לא משומש על ידי עובד אחר
+            var existingEmployeeWithNewIdentity = await _employeeRepository.GetByIdAsync(newIdentity);
+            if (existingEmployeeWithNewIdentity != null && existingEmployeeWithNewIdentity.Id != employee.Id)
+            {
+                throw new Exception("Another employee already uses this Identity.");
+            }
+
+            return await _employeeRepository.UpdateAsync(currentIdentity, newIdentity, employee);
         }
+
 
 
     }

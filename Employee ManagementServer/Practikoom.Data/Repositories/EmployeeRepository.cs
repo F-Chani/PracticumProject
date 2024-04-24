@@ -72,71 +72,34 @@ namespace Practicum.Data.Repositories
             return updateEmployee;
         }
   */
-        public async Task<Employee> UpdateAsync(string currentIdentity,string newIdentity , Employee employee)
+        public async Task<Employee> UpdateAsync(string currentIdentity, string newIdentity, Employee employee)
         {
-            var existingEmployee = await _context.Employees.Include(e => e.PositionEmployees).FirstOrDefaultAsync(e => e.Identity == currentIdentity);
+            var existingEmployee = await _context.Employees
+                .Include(e => e.PositionEmployees)
+                .FirstOrDefaultAsync(e => e.Identity == currentIdentity);
+
             if (existingEmployee == null)
             {
                 throw new InvalidOperationException($"Employee with Identity {currentIdentity} not found.");
             }
+
+            // עדכון פרטי העובד
             existingEmployee.Identity = employee.Identity;
             existingEmployee.FirstName = employee.FirstName;
             existingEmployee.LastName = employee.LastName;
             existingEmployee.StartOfWorkDate = employee.StartOfWorkDate;
             existingEmployee.DateOfBirth = employee.DateOfBirth;
             existingEmployee.Gender = employee.Gender;
-            existingEmployee.PositionEmployees = employee.PositionEmployees;
             existingEmployee.Status = true;
-            foreach (var item in existingEmployee.PositionEmployees)
-            {
-                item.EmployeeId = existingEmployee.Id;
-            }
 
-            await _context.SaveChangesAsync();
-
-            return existingEmployee;
-        }
-        /*
-        public async Task<Employee> UpdateAsync(string currentIdentity, string newIdentity, Employee employee)
-        {
-            var updateEmployee = await _context.Employees.Include(e => e.PositionEmployees).FirstOrDefaultAsync(e => e.Identity == currentIdentity);
-
-            if (updateEmployee == null)
-            {
-                throw new Exception("Employee not found."); // מטרת הזריקה של חריגה
-            }
-
-            // בדיקת תקינות ה-Identity החדש
-            //if (!IsValidIdentity(newIdentity))
-           // {
-            //    throw new Exception("Invalid Identity format."); // זריקת חריגה אם ה-Identity אינו תקין
-            //}
-
-            // בדיקה שה-Identity החדש לא משומש על ידי עובד אחר
-            var existingEmployeeWithNewIdentity = await _context.Employees.FirstOrDefaultAsync(e => e.Identity == newIdentity);
-            if (existingEmployeeWithNewIdentity != null && existingEmployeeWithNewIdentity.Id != updateEmployee.Id)
-            {
-                throw new Exception("Another employee already uses this Identity."); // זריקת חריגה אם ה-Identity כבר קיים במערכת עבור עובד אחר
-            }
-
-            // אם הגענו לכאן, אז אפשר לבצע את העדכון בנתונים
-            updateEmployee.Identity = newIdentity;
-            updateEmployee.FirstName = employee.FirstName;
-            updateEmployee.LastName = employee.LastName;
-            updateEmployee.Gender = employee.Gender;
-            updateEmployee.StartOfWorkDate = employee.StartOfWorkDate;
-            updateEmployee.DateOfBirth = employee.DateOfBirth;
-            updateEmployee.Status = employee.Status;
-
-            // ניקוי והוספת רשומות תפקידים
-            updateEmployee.PositionEmployees.Clear();
-
+            // עדכון רשומות התפקידים
+            existingEmployee.PositionEmployees.Clear();
             foreach (var newPosition in employee.PositionEmployees)
             {
-                var position = await _positionService.GetByIdAsync(newPosition.PositionId);
+                var position = await _context.Positions.FindAsync(newPosition.PositionId);
                 if (position != null)
                 {
-                    updateEmployee.PositionEmployees.Add(new PositionEmployee
+                    existingEmployee.PositionEmployees.Add(new PositionEmployee
                     {
                         Position = position,
                         IsAdmin = newPosition.IsAdmin,
@@ -145,11 +108,10 @@ namespace Practicum.Data.Repositories
                 }
             }
 
-            await _context.SaveChangesAsync(); // שמירת השינויים בבסיס הנתונים
+            await _context.SaveChangesAsync();
 
-            return updateEmployee;
+            return existingEmployee;
         }
-        */
 
 
         public async Task DeleteAsync(string identity)
