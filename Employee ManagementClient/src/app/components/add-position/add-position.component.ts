@@ -23,7 +23,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class AddPositionComponent implements OnInit {
 
   positionForm!: FormGroup;
-
+  isLoading=false;
   constructor(private dialogRef: MatDialogRef<AddPositionComponent>,
     private positionServices: PositionService,
     private formBuilder: FormBuilder
@@ -40,12 +40,15 @@ export class AddPositionComponent implements OnInit {
   }
 
   addPosition(): void {
+    this.isLoading = true;
     if (this.positionForm.valid) {
       this.positionServices.addPosition(this.positionForm.value).subscribe(result => {
-        console.log("position added succsfully", result)
+        console.log("position added succsfully", result);
+        this.isLoading = false; // הסרת הספינר בסיום הקריאה
         this.dialogRef.close(this.positionForm.value);
       })
     } else {
+      this.isLoading = false; // הסרת הספינר בסיום הקריאה
       this.positionForm.markAllAsTouched();
     }
   }

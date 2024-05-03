@@ -1,0 +1,102 @@
+<div class="container">
+  <mat-toolbar class="topbar" >
+      <mat-toolbar-row>
+          <div class="left-content">
+            <img class="logo" src="../../../../assets/images/logoToEMployeeMangment.jpg" alt="Company Logo">
+            <span>Employee Management</span>
+          </div>
+          <span class="fill-remaining-space"></span>
+          <div class="right-content">
+            <div class="searchbar">
+              <input class="search_input" type="text" name="" placeholder="Search🔍..." (keyup)="applyFilter($event)">
+              <mat-icon class="search_icon">search</mat-icon>
+            </div>
+            <button mat-button class="buttontopbar" (click)="downloadExcel()">
+              <mat-icon>file_download</mat-icon>
+              Export to Excel
+            </button>
+            <button mat-button class="buttontopbar" (click)="printEmployee()">
+              <mat-icon>print</mat-icon>
+              Print Employee
+            </button>
+            <button mat-button class="buttontopbar" (click)="openAddEmployeeDialog()">
+              <mat-icon>person_add</mat-icon>
+              Add Employee
+            </button>
+            <button mat-button class="buttontopbar" (click)="openPositionDialog()">
+              <mat-icon>add_circle</mat-icon>
+              Add New Position
+            </button>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+  
+  <mat-table [dataSource]="dataSource">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+          <mat-cell *matCellDef="let employee">{{ employee.identity }}</mat-cell>
+      </ng-container>
+
+      <!-- FirstName Column -->
+      <ng-container matColumnDef="firstName">
+          <mat-header-cell *matHeaderCellDef>FirstName</mat-header-cell>
+          <mat-cell *matCellDef="let employee">{{ employee.firstName }}</mat-cell>
+      </ng-container>
+
+      <!-- lastName Column -->
+      <ng-container matColumnDef="lastName">
+          <mat-header-cell *matHeaderCellDef>lastName</mat-header-cell>
+          <mat-cell *matCellDef="let employee">{{ employee.lastName }}</mat-cell>
+      </ng-container>
+      <!-- startOfWorkDate Column -->
+      <ng-container matColumnDef="startOfWorkDate">
+          <mat-header-cell *matHeaderCellDef>startOfWorkDate</mat-header-cell>
+          <mat-cell *matCellDef="let employee">{{ employee.startOfWorkDate | date: 'yyyy-MM-dd'}}</mat-cell>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+          <mat-cell *matCellDef="let employee">
+              <button mat-icon-button  mat-icon-button
+               matTooltip="Edit" (click)="editDialog(employee)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" mat-icon-button 
+              matTooltip="Delete" (click)="deleteDialog(employee)">
+                <mat-icon>delete</mat-icon>
+              </button>
+          </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<!-- <footer class="footer">
+  <div class="footer-content">
+    <a href="https://github.com/yourusername" target="_blank" class="github-link">
+      <img src="path_to_your_project_icon" alt="GitHub Icon" class="github-icon">
+      GitHub Repository
+    </a>
+    <span class="fill-remaining-space"></span>
+    <p>© 2024 Your Company Name</p>
+  </div>
+</footer> -->
+<!-- <mat-toolbar-row>
+  <mat-icon>
+      <a href="https://github.com/ruthyklein/PracticumProject">
+          <i class="fa-brands fa-github " style="color: #ffffff; font-size: 20px;">
+          </i>
+      </a>
+  </mat-icon>
+  <div style="color: #ffffff; font-size: 17px;">
+      <a href="http://localhost:4200/" style="color: #ffffff; font-size: 17px;"> © 2020 Copyright: Ruth Klein</a>
+  </div>
+  <div>
+
+  </div>
+</mat-toolbar-row>
+ -->

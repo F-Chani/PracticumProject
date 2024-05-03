@@ -1,0 +1,19 @@
+<div class="position-list-container">
+    <h2>Position List</h2>
+    <div class="positions-container">
+        <div class="card-container">
+            <mat-card class="card" *ngFor="let position of positions; let i = index">
+                <mat-card-content>
+                    <div class="card-content">
+                        <h3>{{ position.name }}</h3>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="warn" (click)="cancel()">❌Cancel</button>
+        <button mat-button class="addPosition" (click)="addPosition()">Add New Position</button>
+    </mat-dialog-actions>
+</div>

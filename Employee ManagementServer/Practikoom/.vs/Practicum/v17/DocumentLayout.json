@@ -7,6 +7,9 @@
       "RelativeMoniker": "D:0:0:{6F85A5A4-C553-4DC8-8DFE-764B403EF7F2}|Practicum.Api.csproj|solutionrelative:controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B6982FF9-8670-4860-82A1-28C21CC3AC30}|..\\Practikoom.core\\Practicum.Core.csproj|c:\\users\\user\\desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\practicumproject\\employee managementserver\\practikoom.core\\dtos\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5F42BBE4-F375-4B7C-AB97-7CFF18838229}|..\\Practikoom.Data\\Practicum.Data.csproj|c:\\users\\user\\desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\practicumproject\\employee managementserver\\practikoom.data\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,9 +30,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6982FF9-8670-4860-82A1-28C21CC3AC30}|..\\Practikoom.core\\Practicum.Core.csproj|c:\\users\\user\\desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\practicumproject\\employee managementserver\\practikoom.core\\entities\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6982FF9-8670-4860-82A1-28C21CC3AC30}|..\\Practikoom.core\\Practicum.Core.csproj|c:\\users\\user\\desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\practicumproject\\employee managementserver\\practikoom.core\\dtos\\employeedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6982FF9-8670-4860-82A1-28C21CC3AC30}|..\\Practikoom.core\\Practicum.Core.csproj|c:\\users\\user\\desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\practicumproject\\employee managementserver\\practikoom.core\\dtos\\positiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -260,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EmployeeService.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.Service\\Services\\EmployeeService.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.Service\\Services\\EmployeeService.cs",
@@ -268,8 +268,7 @@
               "RelativeToolTip": "..\\Practikoom.Service\\Services\\EmployeeService.cs",
               "ViewState": "AQIAABUAAAAAAAAAAAAYwCwAAABtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T12:25:23.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T12:25:23.222Z"
             },
             {
               "$type": "Document",
@@ -279,14 +278,14 @@
               "RelativeDocumentMoniker": "Controllers\\EmployeeController.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAqwCsAAAAJAAAA",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAjwJwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T21:35:58.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Employee.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Entities\\Employee.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.core\\Entities\\Employee.cs",
@@ -294,12 +293,11 @@
               "RelativeToolTip": "..\\Practikoom.core\\Entities\\Employee.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:29:27.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:29:27.087Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Position.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Entities\\Position.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.core\\Entities\\Position.cs",
@@ -307,25 +305,24 @@
               "RelativeToolTip": "..\\Practikoom.core\\Entities\\Position.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:30:20.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:30:20.079Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
               "Title": "EmployeeDto.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\DTOs\\EmployeeDto.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.core\\DTOs\\EmployeeDto.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\DTOs\\EmployeeDto.cs",
               "RelativeToolTip": "..\\Practikoom.core\\DTOs\\EmployeeDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-24T11:29:04.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Mapping\\MappingProfile.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.core\\Mapping\\MappingProfile.cs",
@@ -333,12 +330,11 @@
               "RelativeToolTip": "..\\Practikoom.core\\Mapping\\MappingProfile.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:30:58.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:30:58.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "EmployeeRepository.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.Data\\Repositories\\EmployeeRepository.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.Data\\Repositories\\EmployeeRepository.cs",
@@ -346,12 +342,11 @@
               "RelativeToolTip": "..\\Practikoom.Data\\Repositories\\EmployeeRepository.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAgwHIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:39:21.158Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:39:21.158Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PositionEmployee.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom.core\\Entities\\PositionEmployee.cs",
               "RelativeDocumentMoniker": "..\\Practikoom.core\\Entities\\PositionEmployee.cs",
@@ -359,12 +354,11 @@
               "RelativeToolTip": "..\\Practikoom.core\\Entities\\PositionEmployee.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:30:22.182Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:30:22.182Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "EmployeePostModel.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\\u05D7\u05E0\u05D9 \u05EA\u05DB\u05E0\u05D5\u05EA\\\u05E4\u05E8\u05E7\u05D8\u05D9\u05E7\u05D5\u05DD\\PracticumProject\\Employee ManagementServer\\Practikoom\\Models\\EmployeePostModel.cs",
               "RelativeDocumentMoniker": "Models\\EmployeePostModel.cs",
@@ -372,8 +366,7 @@
               "RelativeToolTip": "Models\\EmployeePostModel.cs",
               "ViewState": "AQIAAAEAAAAAAAAAAAAmwAgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T17:19:48.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-26T17:19:48.536Z"
             },
             {
               "$type": "Document",
@@ -385,8 +378,7 @@
               "RelativeToolTip": "..\\Practikoom.core\\DTOs\\PositionDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:28:58.446Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:28:58.446Z"
             },
             {
               "$type": "Document",
@@ -398,8 +390,7 @@
               "RelativeToolTip": "..\\Practikoom.core\\DTOs\\PositionEmployeeDto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T11:28:54.764Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T11:28:54.764Z"
             },
             {
               "$type": "Document",
@@ -411,8 +402,7 @@
               "RelativeToolTip": "Models\\PositionEmployeePostModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T17:22:48.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-26T17:22:48.305Z"
             },
             {
               "$type": "Document",
@@ -424,8 +414,7 @@
               "RelativeToolTip": "Models\\PositionPostModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T17:22:33.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-26T17:22:33.728Z"
             },
             {
               "$type": "Document",

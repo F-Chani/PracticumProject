@@ -108,7 +108,7 @@
 
 <div class="container">
   <h2>Edit Employee</h2>
-  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="employeeForm">
     <mat-dialog-content >
       <!-- ID Number -->
       <mat-form-field>
@@ -212,7 +212,15 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
+      <div *ngIf="isLoading">
+        <mat-spinner></mat-spinner> <!-- ספינר -->
+        <p>Updating employee...</p>
+      </div>
     </mat-dialog-content>
+    <!-- <div *ngIf="isLoading" class="spinner-overlay">
+      <div class="spinner"></div>
+    </div> -->
+    
     <mat-dialog-actions>
       <button mat-button color="warn" (click)="cancel()">❌Cancel</button>
       <button mat-button color="'warn'" type="submit" (click)="onSubmit()">Submit</button>

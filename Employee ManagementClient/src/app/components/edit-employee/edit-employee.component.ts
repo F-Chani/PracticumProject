@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators ,ReactiveFormsModule} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeService } from '../../Services/employee/employee.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../../models/Employee.model';
-import { MAT_DIALOG_DATA, MatDialogRef,MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { PositionService } from '../../Services/position/position.service';
 import { Position } from '../../models/Position.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +17,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 @Component({
   selector: 'app-edit-employee',
   standalone: true,
@@ -35,7 +38,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
   templateUrl: './edit-employee.component.html',
   styleUrls: ['./edit-employee.component.scss']
@@ -45,13 +50,15 @@ export class EditEmployeeComponent implements OnInit {
   employeeForm!: FormGroup;
   positionEmployees: Position[] = [];
   currentIdentity!: string;
+  isLoading = false;
 
   constructor(private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
     private positionService: PositionService,
     private dialogRef: MatDialogRef<EditEmployeeComponent>,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: { employee: Employee }) { }
-
+    
   ngOnInit(): void {
     const employee = this.data.employee;
     this.currentIdentity = employee.identity;
@@ -129,23 +136,47 @@ export class EditEmployeeComponent implements OnInit {
     this.positionsFormArray.removeAt(index);
   }
   cancel(): void {
-    this.dialogRef.close(false);
+    if (this.employeeForm.dirty) {
+      const confirmCancel = confirm('Are you sure you want to cancel? Any unsaved changes will be lost.');
+      if (confirmCancel) {
+        this.dialogRef.close(false);
+      }
+    } else {
+      this.dialogRef.close(false);
+    }
   }
   onSubmit(): void {
-    console.log('updateEmployee', this.employeeForm.value)
+    console.log('onSubmit', this.employeeForm.value)
+    this.isLoading = true;
+    console.log(this.isLoading)
     if (this.employeeForm.valid) {
-      this.employeeService.updateEmployee(this.currentIdentity, this.employeeForm.value.identity, this.employeeForm.value).subscribe(
-        res => {
-          console.log('Employee updated successfully:', res);
-          this.dialogRef.close(true);
-        },
-        error => {
-          console.error('Failed to update employee:', error);
-        }
-      )
-    }
-    else{
+      this.employeeService.updateEmployee(this.currentIdentity, this.employeeForm.value.identity, this.employeeForm.value)
+        .subscribe({
+          next: () => {
+            this.successSnackBar('Employee update successfully');
+            this.isLoading = false; // הסרת הספינר בסיום הקריאה
+            this.dialogRef.close(true);
+          },
+          error: () => {
+            this.errorSnackBar('Please fill in all required fields');
+            this.isLoading = false; // הסרת הספינר בסיום הקריאה
+          }
+        })
+    } else {
       this.employeeForm.markAllAsTouched();
+      this.isLoading = false; // הסרת הספינר בסיום הקריאה
     }
+  }
+  successSnackBar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: ['success-snackbar']
+    });
+  }
+  errorSnackBar(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+      panelClass: ['error-snackbar']
+    });
   }
 }
