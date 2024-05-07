@@ -172,13 +172,11 @@
       </mat-form-field>
 
       <mat-accordion formArrayName="positionEmployees">
-        <button mat-raised-button (click)="addPositionControl()">Add
+        <button mat-raised-button class="mat-raised-button" (click)="addPositionControl()">Add
           Position<mat-icon>add</mat-icon></button>
-        <mat-expansion-panel *ngFor="let position of positionsFormArray.controls; let i = index">
+        <mat-expansion-panel *ngFor="let position of positionsFormArray.controls; let i = index" class="expansion-pane">
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              Position {{ i + 1 }}
-            </mat-panel-title>
+            <mat-panel-title> Position {{ i + 1 }} </mat-panel-title>
             <button mat-icon-button color="warn" (click)="removeControlOfPosition(i)">
               <mat-icon>delete</mat-icon>
             </button>
@@ -203,8 +201,8 @@
                   placeholder="Enter Date Of Entry">
                 <mat-datepicker-toggle matSuffix [for]="dateOfEntry"></mat-datepicker-toggle>
                 <mat-datepicker #dateOfEntry></mat-datepicker>
-                <!-- <mat-error *ngIf="positionsFormArray.controls[i].get('dateOfEntry')?.hasError('required')">Entry Date is required</mat-error> -->
-                <!-- <mat-error *ngIf="positionsFormArray.controls[i].get('dateOfEntry')?.hasError('dateOfEntryBeforeWorkDate')">Entry Date must be after Start of Work Date</mat-error> -->
+                <mat-error *ngIf="positionsFormArray.controls[i].get('dateOfEntry')?.hasError('required')">Entry Date is required</mat-error>
+                <mat-error *ngIf="positionsFormArray.controls[i].get('dateOfEntry')?.hasError('dateOfEntryBeforeWorkDate')">Entry Date must be after Start of Work Date</mat-error>
               </mat-form-field>
 
               <mat-checkbox formControlName="isAdmin">Is Admin</mat-checkbox>
@@ -217,13 +215,10 @@
         <p>Updating employee...</p>
       </div>
     </mat-dialog-content>
-    <!-- <div *ngIf="isLoading" class="spinner-overlay">
-      <div class="spinner"></div>
-    </div> -->
     
-    <mat-dialog-actions>
+    <mat-dialog-actions align="end">
       <button mat-button color="warn" (click)="cancel()">❌Cancel</button>
-      <button mat-button color="'warn'" type="submit" (click)="onSubmit()">Submit</button>
+      <button mat-button class="submit" type="submit" (click)="onSubmit()">Submit</button>
 
     </mat-dialog-actions>
   </form>

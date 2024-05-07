@@ -38,6 +38,7 @@ export class AllPositionsComponent implements OnInit {
   }
   addPosition(): void {
     const dialogRef = this.dialog.open(AddPositionComponent, {
+      width:"300px",
       disableClose: true, // לא לאפשר סגירה על ידי לחיצה מחוץ לדיאלוג
     });
     dialogRef.afterClosed().subscribe(() => {

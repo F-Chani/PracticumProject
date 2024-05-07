@@ -83,7 +83,11 @@ namespace Practicum.Controllers
             {
                 ModelState.AddModelError("StartOfWorkDate", "Start of work date is required.");
             }
-
+            else if (model.StartOfWorkDate <= model.DateOfBirth)
+            {
+                ModelState.AddModelError("StartOfWorkDate", "Start of work date cannot be before date of birth");
+                return BadRequest(ModelState); 
+            }
             if (model.DateOfBirth == default(DateTime))
             {
                 ModelState.AddModelError("DateOfBirth", "Date of birth is required.");
@@ -183,9 +187,9 @@ namespace Practicum.Controllers
             {
                 ModelState.AddModelError("LastName", "Last name is required.");
             }
-            else if (!Regex.IsMatch(model.LastName, @"^[A-Za-z]+$"))
+            else if (!Regex.IsMatch(model.LastName, @"^[A-Za-z]{2,}$"))
             {
-                ModelState.AddModelError("LastName", "Last name must contain only letters.");
+                ModelState.AddModelError("LastName", "Last name must contain only letters and be at least 2 characters long.");
             }
 
             if (string.IsNullOrWhiteSpace(model.Gender))
@@ -207,11 +211,15 @@ namespace Practicum.Controllers
                 ModelState.AddModelError("DateOfBirth", "Employee must be at least 18 years old.");
             }
 
-            // בדיקת תקינות שדות התאריכים
             if (model.StartOfWorkDate <= model.DateOfBirth)
             {
                 ModelState.AddModelError("StartOfWorkDate", "Start of work date cannot be before date of birth");
-                return BadRequest(ModelState); // חזור באובייקט BadRequest במקרה של שגיאה
+                return BadRequest(ModelState); 
+            }
+            if (model.PositionEmployees.Any(p => p.DateOfEntry < model.StartOfWorkDate))
+            {
+                ModelState.AddModelError("EntryDate", "Entry date must be after start of work date");
+                return BadRequest(ModelState);
             }
 
             // אם התקינות של המודל תקינה, בצע את העדכון

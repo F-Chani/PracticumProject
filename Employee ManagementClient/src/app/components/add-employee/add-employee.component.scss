@@ -6,15 +6,21 @@ h2 {
 
 h4 {
   text-align: center;
+  color: black;
 }
 
-button.mat-button {
+.submit{
   background-color: black;
-  /* רקע של הכפתורים */
   color: white;
-  /* צבע הטקסט של הכפתורים */
 }
-
+.mat-raised-button{
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+}
+.expansion-pane{
+  margin-bottom: 10px;
+}
 mat-form-field {
   width: 100%;
   margin-bottom: 20px;

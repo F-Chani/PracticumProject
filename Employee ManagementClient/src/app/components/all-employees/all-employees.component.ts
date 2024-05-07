@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
 import { Employee } from '../../models/Employee.model';
 import { EmployeeService } from '../../Services/employee/employee.service';
@@ -12,7 +11,6 @@ import { forkJoin } from 'rxjs';
 import { PositionService } from '../../Services/position/position.service';
 import { Position } from '../../models/Position.model';
 import { CommonModule } from '@angular/common';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -20,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -29,7 +27,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AddPositionComponent } from '../add-position/add-position.component';
 import { AllPositionsComponent } from '../all-positions/all-positions.component';
 
 @Component({
@@ -110,7 +107,7 @@ export class AllEmployeesComponent implements OnInit {
   }
   openAddEmployeeDialog(): void {
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
-      width: '400px',
+      width: '500px',
       disableClose: true,
     });
 
@@ -122,7 +119,7 @@ export class AllEmployeesComponent implements OnInit {
   }
   openPositionDialog(): void {
     const dialogRef = this.dialog.open(AllPositionsComponent, {
-      width: '400px',
+      width: '500px',
       disableClose: true, // לא לאפשר סגירה על ידי לחיצה מחוץ לדיאלוג
     });
     dialogRef.afterClosed().subscribe(() => {
@@ -162,8 +159,6 @@ export class AllEmployeesComponent implements OnInit {
       positions.forEach((position: Position) => {
         this.positionsMap.set(position.id, position.name);
       });
-
-      // Call exportToExcel() or any other function here if needed
     });
   }
 

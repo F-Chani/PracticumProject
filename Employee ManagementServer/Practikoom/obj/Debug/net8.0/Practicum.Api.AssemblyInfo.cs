@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Practicum.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+693e4842ef5e26f2ad316a92ff75eb501c9995ef")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b009d815a5af708e1f8aafff3886c4753124add")]
 [assembly: System.Reflection.AssemblyProductAttribute("Practicum.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Practicum.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

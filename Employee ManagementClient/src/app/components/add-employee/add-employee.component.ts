@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Position } from '../../models/Position.model';
 import { EmployeeService } from '../../Services/employee/employee.service';
 import { PositionService } from '../../Services/position/position.service';
@@ -52,7 +52,7 @@ export class AddEmployeeComponent implements OnInit {
     private employeeServices: EmployeeService,
     private positionService: PositionService,
     private dialog: MatDialog,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<AddEmployeeComponent>,) { }
 
   ngOnInit(): void {
@@ -60,18 +60,61 @@ export class AddEmployeeComponent implements OnInit {
     this.fetchPositions();
   }
 
+  birthdateBeforeStartDate(control: AbstractControl): ValidationErrors | null {
+    const startDate = control.get('startOfWorkDate')?.value;
+    const birthDate = control.get('dateOfBirth')?.value;
 
+    if (startDate && birthDate) {
+      return startDate > birthDate ? { birthdateBeforeStartDate: true } : null;
+    }
+
+    return null;
+  }
+
+  isOverEighteen():void{
+  //   const birthDate = control.get('dateOfBirth')?.value;
+  //   const today = new Date();
+  //   const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+  //  console.log("eighteenYearsAgo",birthDate <= eighteenYearsAgo)
+  //   return birthDate <= eighteenYearsAgo ? null : { underEighteen: true };
+  }
+   isOverAgeWithError(dateOfBirth: Date, minAge: number): string | null {
+    const currentDate = new Date();
+    const birthDate = new Date(dateOfBirth);
+    const age = currentDate.getFullYear() - birthDate.getFullYear();
+    const monthDiff = currentDate.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())) {
+        return age - 1 >= minAge ? null : `Date of Birth must be above or equal to ${minAge} years old`;
+    } else {
+        return age >= minAge ? null : `Date of Birth must be above or equal to ${minAge} years old`;
+    }
+}
+  
+  dateOfEntryAfterStartDate(control: AbstractControl): ValidationErrors | null {
+    const startDate = control.get('startOfWorkDate')?.value;
+    const entryDate = control.get('dateOfEntry')?.value;
+  
+    if (startDate && entryDate) {
+      return entryDate >= startDate ? null : { entryBeforeStartDate: true };
+    }
+  
+    return null;
+  }
+    
   buildEmployeeForm() {
     this.employeeForm = this.formBuilder.group({
-      identity: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      identity: ['', [Validators.required, Validators.pattern(/^\d{9}$/)]],
+      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
       startOfWorkDate: ['', Validators.required],
-      dateOfBirth: ['', Validators.required],
+      dateOfBirth: ['', [Validators.required, this.isOverEighteen]],
       gender: ['', Validators.required],
       positionEmployees: this.formBuilder.array([], Validators.required)
-    });
+    }, { validators: [this.birthdateBeforeStartDate, this.dateOfEntryAfterStartDate] }); // הוספת הוידייטור
   }
+  
+  
 
   fetchPositions(): void {
     console.log("fetchPosition")
@@ -91,13 +134,13 @@ export class AddEmployeeComponent implements OnInit {
     return this.employeeForm.get('positionEmployees') as FormArray;
   }
   successSnackBar(message: string): void {
-    this._snackBar.open(message, 'Close', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000,
       panelClass: ['success-snackbar']
     });
   }
   errorSnackBar(message: string): void {
-    this._snackBar.open(message, 'Close', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000,
       panelClass: ['error-snackbar']
     });
@@ -107,15 +150,16 @@ export class AddEmployeeComponent implements OnInit {
     console.log("addNewControlToPosition", this.positionEmployees.length)
     if (this.positionEmployees.length > 0) {
       this.FormArray.push(this.formBuilder.group({
-        positionId: [Validators.required],
+        positionId: ['',Validators.required],
         isAdmin: [false],
-        dateOfEntry: [Validators.required]
+        dateOfEntry: [null,Validators.required]
       }))
     }
 
   }
 
   onSubmit() {
+    console.log(this.employeeForm.value,'employeeForm')
     if (this.employeeForm.valid) {
       console.log(this.employeeForm.value);
       const formEmployee = this.employeeForm.value;
