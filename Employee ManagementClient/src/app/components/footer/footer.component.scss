@@ -1,20 +1,43 @@
 .footer {
-    background-color: black;
-    color: white;
-    padding: 3px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #2f2b2b;
     text-align: center;
+    padding: 20px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
 }
 
 .footer-content {
     display: flex;
     align-items: center;
+
 }
+
+.left-content {
+    display: flex;
+    align-items: center;
+}
+
+.right-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 900px;
+}
+
 
 .github-link {
     display: flex;
     align-items: center;
-    color: white;
+    color: rgb(239, 101, 101);
     text-decoration: none;
+    margin-right: 20px;
+    font-size: large;
 }
 
 .github-icon {
@@ -23,6 +46,20 @@
     margin-right: 8px;
 }
 
-.fill-remaining-space {
-    flex: 1;
+.contact-info {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.contact {
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.contact a {
+    color: white;
+    text-decoration: none;
 }

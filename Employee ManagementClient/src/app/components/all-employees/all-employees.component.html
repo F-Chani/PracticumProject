@@ -10,7 +10,9 @@
             <div class="searchbar">
               <input class="search_input" type="text" name="" placeholder="Search🔍..." (keyup)="applyFilter($event)">
               <mat-icon class="search_icon">search</mat-icon>
+              <div class="no-result" *ngIf="dataSource && dataSource.filteredData.length === 0">No result</div>
             </div>
+            
             <button mat-button class="buttontopbar" (click)="downloadExcel()">
               <mat-icon>file_download</mat-icon>
               Export to Excel
@@ -24,8 +26,8 @@
               Add Employee
             </button>
             <button mat-button class="buttontopbar" (click)="openPositionDialog()">
-              <mat-icon>add_circle</mat-icon>
-              Add New Position
+              <mat-icon>view_list</mat-icon>
+              All Positions
             </button>
           </div>
         </mat-toolbar-row>
@@ -84,8 +86,8 @@
     <span class="fill-remaining-space"></span>
     <p>© 2024 Your Company Name</p>
   </div>
-</footer> -->
-<!-- <mat-toolbar-row>
+</footer>
+ <mat-toolbar-row>
   <mat-icon>
       <a href="https://github.com/ruthyklein/PracticumProject">
           <i class="fa-brands fa-github " style="color: #ffffff; font-size: 20px;">
@@ -98,5 +100,4 @@
   <div>
 
   </div>
-</mat-toolbar-row>
- -->
+</mat-toolbar-row> -->

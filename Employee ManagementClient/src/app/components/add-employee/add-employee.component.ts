@@ -48,7 +48,6 @@ export class AddEmployeeComponent implements OnInit {
   positionEmployees: Position[] = [];
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router,
     private employeeServices: EmployeeService,
     private positionService: PositionService,
     private dialog: MatDialog,
@@ -58,48 +57,54 @@ export class AddEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.buildEmployeeForm();
     this.fetchPositions();
+
+    this.employeeForm.get('startOfWorkDate')?.valueChanges.subscribe(() => {
+      this.dateValidator();
+    });
+
+    this.employeeForm.get('dateOfBirth')?.valueChanges.subscribe(() => {
+      this.ageValidator(18);
+    });
+    this.employeeForm.get('positionEmployees')?.valueChanges.subscribe(() => {
+      this.EntryValidator();
+    });
   }
 
-  birthdateBeforeStartDate(control: AbstractControl): ValidationErrors | null {
-    const startDate = control.get('startOfWorkDate')?.value;
-    const birthDate = control.get('dateOfBirth')?.value;
+  ageValidator(minAge: number) {
+    console.log("ageValidator")
+    const birthdate = new Date(this.employeeForm.get('dateOfBirth')?.value);
+    const ageDifferenceMs = Date.now() - birthdate.getTime();
+    const ageDate = new Date(ageDifferenceMs);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
 
-    if (startDate && birthDate) {
-      return startDate > birthDate ? { birthdateBeforeStartDate: true } : null;
-    }
-
-    return null;
-  }
-
-  isOverEighteen():void{
-  //   const birthDate = control.get('dateOfBirth')?.value;
-  //   const today = new Date();
-  //   const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
-  //  console.log("eighteenYearsAgo",birthDate <= eighteenYearsAgo)
-  //   return birthDate <= eighteenYearsAgo ? null : { underEighteen: true };
-  }
-   isOverAgeWithError(dateOfBirth: Date, minAge: number): string | null {
-    const currentDate = new Date();
-    const birthDate = new Date(dateOfBirth);
-    const age = currentDate.getFullYear() - birthDate.getFullYear();
-    const monthDiff = currentDate.getMonth() - birthDate.getMonth();
-    
-    if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < birthDate.getDate())) {
-        return age - 1 >= minAge ? null : `Date of Birth must be above or equal to ${minAge} years old`;
+    if (age < minAge) {
+      console.log("tooYoung",age < minAge)
+      this.employeeForm.get('dateOfBirth')?.setErrors({ tooYoung: true });
     } else {
-        return age >= minAge ? null : `Date of Birth must be above or equal to ${minAge} years old`;
+      this.employeeForm.get('dateOfBirth')?.setErrors(null);
     }
-}
-  
-  dateOfEntryAfterStartDate(control: AbstractControl): ValidationErrors | null {
-    const startDate = control.get('startOfWorkDate')?.value;
-    const entryDate = control.get('dateOfEntry')?.value;
-  
-    if (startDate && entryDate) {
-      return entryDate >= startDate ? null : { entryBeforeStartDate: true };
+  }
+
+  dateValidator() {
+    const startDate = new Date(this.employeeForm.get('startOfWorkDate')?.value);
+    const endDate = new Date(this.employeeForm.get('dateOfBirth')?.value);
+
+    if (startDate < endDate) {
+      this.employeeForm.get('startOfWorkDate')?.setErrors({ invalidStartDate: true });
+    } else {
+      this.employeeForm.get('startOfWorkDate')?.setErrors(null);
     }
-  
-    return null;
+  }
+  EntryValidator(): void {
+    this.FormArray.controls.forEach((control: AbstractControl) => {
+      const workDate = this.employeeForm.get('startOfWorkDate')?.value;
+      const entryDate = control.get('dateOfEntry')?.value;
+      if (workDate && entryDate && entryDate < workDate) {
+        control.get('dateOfEntry')?.setErrors({ entryDateBeforeWorkDate: true });
+      } else {
+        control.get('dateOfEntry')?.setErrors(null);
+      }
+    });
   }
     
   buildEmployeeForm() {
@@ -108,10 +113,10 @@ export class AddEmployeeComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
       lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]],
       startOfWorkDate: ['', Validators.required],
-      dateOfBirth: ['', [Validators.required, this.isOverEighteen]],
+      dateOfBirth: ['', [Validators.required]],
       gender: ['', Validators.required],
       positionEmployees: this.formBuilder.array([], Validators.required)
-    }, { validators: [this.birthdateBeforeStartDate, this.dateOfEntryAfterStartDate] }); // הוספת הוידייטור
+    });
   }
   
   

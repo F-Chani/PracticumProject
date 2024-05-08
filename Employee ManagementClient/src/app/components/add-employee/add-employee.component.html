@@ -42,9 +42,9 @@
         <mat-datepicker #startDatePicker></mat-datepicker>
         <mat-error *ngIf="employeeForm.get('startOfWorkDate')?.hasError('required')">Start of Work Date is
           required</mat-error>
-        <mat-error *ngIf="employeeForm.get('startOfWorkDate')?.hasError('birthdateBeforeStartDate')">
-          Start Date To Work cannot be before Date of Birth
-        </mat-error>
+        <mat-error
+          *ngIf="employeeForm.get('startOfWorkDate')?.hasError('invalidStartDate') && employeeForm.get('startOfWorkDate')?.touched">
+          startOfWorkDate must be after DateOfBirth </mat-error>
       </mat-form-field>
 
       <div class="form-group">
@@ -55,7 +55,8 @@
           <mat-datepicker #dateOfBirth></mat-datepicker>
           <mat-error *ngIf="employeeForm.get('dateOfBirth')?.hasError('required')">Date of Birth is
             required</mat-error>
-          <mat-error *ngIf="employeeForm.get('dateOfBirth')?.hasError('underEighteen')">
+          <mat-error
+            *ngIf="employeeForm.get('dateOfBirth')?.hasError('tooYoung') && employeeForm.get('dateOfBirth')?.touched">
             Date of Birth must be above or equal to 18 years old
           </mat-error>
         </mat-form-field>
@@ -103,7 +104,7 @@
               <mat-datepicker #entryDate></mat-datepicker>
               <mat-error *ngIf="FormArray.controls[i].get('dateOfEntry')?.hasError('required')">Entry Date
                 is required</mat-error>
-              <mat-error *ngIf="FormArray.controls[i].get('dateOfEntry')?.hasError('entryBeforeStartDate')">Entry
+              <mat-error *ngIf="FormArray.controls[i].get('dateOfEntry')?.hasError('entryDateBeforeWorkDate')">Entry
                 Date must be after Start of Work Date</mat-error>
             </mat-form-field>
             <mat-checkbox formControlName="isAdmin">Is Admin</mat-checkbox>

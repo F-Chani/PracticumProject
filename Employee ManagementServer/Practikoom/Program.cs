@@ -56,6 +56,15 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
+
+//Dependency Injection
+
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IPositionRepository, PositionRepository>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IPositionService, PositionService>();
+builder.Services.AddAutoMapper(typeof(MappingProfile), typeof(PostModelsMappingProfile));
+builder.Services.AddDbContext<DataContext>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -74,18 +83,6 @@ builder.Services.AddAuthentication(options =>
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
         };
     });
-
-//Dependency Injection
-
-builder.Services.AddAutoMapper(typeof(MappingProfile), typeof(PostModelsMappingProfile));
-
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<IPositionRepository, PositionRepository>();
-
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IPositionService, PositionService>();
-
-builder.Services.AddDbContext<DataContext>();
 
 
 var app = builder.Build();

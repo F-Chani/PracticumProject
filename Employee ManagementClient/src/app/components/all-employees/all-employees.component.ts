@@ -29,6 +29,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AllPositionsComponent } from '../all-positions/all-positions.component';
 
+
 @Component({
   selector: 'app-all-employees',
   standalone:true,
@@ -58,7 +59,7 @@ import { AllPositionsComponent } from '../all-positions/all-positions.component'
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatExpansionModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   templateUrl: './all-employees.component.html',
   styleUrls: ['./all-employees.component.scss']

@@ -36,18 +36,24 @@
 .example-spacer {
     flex: 1 1 auto;
 }
-
 .search_input {
     border: 0;
-    outline: 0;
-    background: none;
+    background: white; /* צבע רקע לבן */
     width: 0;
+    opacity: 0; /* מסתיר את השדה חיפוש באופן חלק */
+    visibility: hidden; /* מסתיר את השדה חיפוש */
     caret-color: transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    color: white;
-
+    transition: width 0.4s ease, opacity 0.4s ease, visibility 0.4s ease; /* אנימציה לשינויי רוחב, אטימות ונראות */
 }
+
+.searchbar:hover .search_input {
+    width: 300px; /* רוחב השדה חיפוש בעת העצירה על האיקון */
+    opacity: 1; /* מציג את השדה חיפוש */
+    visibility: visible; /* מציג את השדה חיפוש */
+    caret-color: initial;
+    height: 40px;
+}
+
 
 .logo {
     height: 60px;

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl } from '@angular/forms';
 import { EmployeeService } from '../../Services/employee/employee.service';
 import { Employee } from '../../models/Employee.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
@@ -58,21 +58,70 @@ export class EditEmployeeComponent implements OnInit {
     private dialogRef: MatDialogRef<EditEmployeeComponent>,
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: { employee: Employee }) { }
-    
+
   ngOnInit(): void {
     const employee = this.data.employee;
     this.currentIdentity = employee.identity;
     this.getEmployeeForm(employee);
     this.loadPosition();
 
+
+    this.employeeForm.get('startOfWorkDate')?.valueChanges.subscribe(() => {
+      this.dateValidator();
+    });
+
+    this.employeeForm.get('dateOfBirth')?.valueChanges.subscribe(() => {
+      this.ageValidator(18);
+    });
+    this.employeeForm.get('startOfWorkDate')?.valueChanges.subscribe(() => {
+      this.EntryValidator();
+    });
   }
+
+  ageValidator(minAge: number) {
+    console.log("ageValidator")
+    const birthdate = new Date(this.employeeForm.get('dateOfBirth')?.value);
+    const ageDifferenceMs = Date.now() - birthdate.getTime();
+    const ageDate = new Date(ageDifferenceMs);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+    if (age < minAge) {
+      console.log("tooYoung", age < minAge)
+      this.employeeForm.get('dateOfBirth')?.setErrors({ tooYoung: true });
+    } else {
+      this.employeeForm.get('dateOfBirth')?.setErrors(null);
+    }
+  }
+
+  dateValidator() {
+    const startDate = new Date(this.employeeForm.get('startOfWorkDate')?.value);
+    const endDate = new Date(this.employeeForm.get('dateOfBirth')?.value);
+
+    if (startDate < endDate) {
+      this.employeeForm.get('startOfWorkDate')?.setErrors({ invalidStartDate: true });
+    } else {
+      this.employeeForm.get('startOfWorkDate')?.setErrors(null);
+    }
+  }
+  EntryValidator(): void {
+    this.positionsFormArray.controls.forEach((control: AbstractControl) => {
+      const workDate = this.employeeForm.get('startOfWorkDate')?.value;
+      const entryDate = control.get('dateOfEntry')?.value;
+      if (workDate && entryDate && entryDate < workDate) {
+        control.get('dateOfEntry')?.setErrors({ entryDateBeforeWorkDate: true });
+      } else {
+        control.get('dateOfEntry')?.setErrors(null);
+      }
+    });
+  }
+
 
   getEmployeeForm(employee: Employee): void {
     const genderLabel = employee.gender === 0 ? 'male' : 'female';
     this.employeeForm = this.formBuilder.group({
       identity: [employee.identity, [Validators.required, Validators.pattern(/^\d{9}$/)]],
-      firstName: [employee.firstName, [Validators.required, Validators.pattern(/^[\p{L}\s]{2,}$/u)]],
-      lastName: [employee.lastName, [Validators.required, Validators.pattern(/^[\p{L}\s]{2,}$/u)]],
+      firstName: [employee.firstName, [Validators.required, Validators.pattern('[a-zA-Z]+')]],
+      lastName: [employee.lastName, [Validators.required, Validators.pattern('[a-zA-Z]+')]],
       startOfWorkDate: [employee.startOfWorkDate, Validators.required],
       dateOfBirth: [employee.dateOfBirth, Validators.required],
       gender: [genderLabel, Validators.required],
@@ -88,7 +137,7 @@ export class EditEmployeeComponent implements OnInit {
       positionsFormArray.push(this.formBuilder.group({
         positionId: [position.position.id, Validators.required],
         isAdmin: [position.isAdmin, Validators.required],
-        dateOfEntry: [position.dateOfEntry]
+        dateOfEntry: [position.dateOfEntry, Validators.required]
       }))
     })
   }
@@ -117,9 +166,9 @@ export class EditEmployeeComponent implements OnInit {
       dateOfEntry: [null]
     }))
     console.log('addPositionControl', this.positionsFormArray.value)
-    this.xxx(this.positionsFormArray.length - 1)
+    this.setInitialPositionValue(this.positionsFormArray.length - 1)
   }
-  xxx(index: number): void {
+  setInitialPositionValue(index: number): void {
     console.log("this is the xxx", index)
     const positionControl = this.positionsFormArray.at(index).get('positionId')
     console.log("in xxx positionControl", positionControl)
